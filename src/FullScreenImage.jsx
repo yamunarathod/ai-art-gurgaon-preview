@@ -12,7 +12,7 @@ const FullScreenImage = () => {
     fetchLatestImage();
 
     const channel = supabase
-      .channel('gurgaon:images')
+      .channel('gurgaon')
       .on('postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'images' },
         payload => {
