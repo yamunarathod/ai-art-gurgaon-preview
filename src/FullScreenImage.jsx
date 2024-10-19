@@ -1,8 +1,8 @@
 import  { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://mxyippuwkpysdexmxrbm.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im14eWlwcHV3a3B5c2RleG14cmJtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk5NzI1ODcsImV4cCI6MjAyNTU0ODU4N30.ed2YgcvYOoajEOc-NkcTpwW1Bhb79sWoRWKGHZDdxHM';
+const supabaseUrl = 'https://ixdvhtnzvbnbxmtkqyxe.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4ZHZodG56dmJuYnhtdGtxeXhlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkzMTczOTEsImV4cCI6MjA0NDg5MzM5MX0.NUVrCRc0LTWhXZMsuZYIsLLiH_zhckfRygoi88Sue70';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const FullScreenImage = () => {
