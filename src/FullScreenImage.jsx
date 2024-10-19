@@ -20,7 +20,6 @@ const FullScreenImage = () => {
         }
       )
       .subscribe();
-
     return () => {
       supabase.removeChannel(channel);
     };
