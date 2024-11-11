@@ -168,7 +168,6 @@
 
 // // export default FullScreenImage;
 
-
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
@@ -185,7 +184,7 @@ const FullScreenImage = () => {
 
     // Set up realtime subscription
     const channel = supabase
-      .channel('public:images')  // Target the images table in public schema
+      .channel('table:public:images')  // Use explicit table reference for real-time subscription
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'images' }, (payload) => {
         if (payload.new?.url) {
           setImageUrl(payload.new.url);
