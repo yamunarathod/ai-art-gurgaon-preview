@@ -169,12 +169,11 @@
 // // export default FullScreenImage;
 
 
-
 import { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = 'https://vogewdoilqaqjlshdzue.supabase.co';
-const supabaseKey = 'your-supabase-key';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvZ2V3ZG9pbHFhcWpsc2hkenVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjQ3OTUsImV4cCI6MjA0NjkwMDc5NX0.T1YTNPKH5Caxp1CQYiO6zwGKVcY7UHU0UkOYo6vdVGc';
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const FullScreenImage = () => {
