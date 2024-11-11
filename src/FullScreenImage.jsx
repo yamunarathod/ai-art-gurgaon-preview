@@ -12,7 +12,7 @@ const FullScreenImage = () => {
     fetchLatestImage();
 
     const channel = supabase
-      .channel('gurgaon')
+      .channel('images')
       .on('postgres_changes',
         { event: 'INSERT', schema: 'public', table: 'images' },
         payload => {
@@ -28,7 +28,7 @@ const FullScreenImage = () => {
   const fetchLatestImage = async () => {
     try {
       const { data, error } = await supabase
-        .from('images')
+        .from('gurgaon')
         .select('url')
         .order('created_at', { ascending: false })
         .limit(1)
