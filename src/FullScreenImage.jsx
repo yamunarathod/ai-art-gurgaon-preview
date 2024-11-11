@@ -1,83 +1,83 @@
-// import  { useState, useEffect } from 'react';
-// import { createClient } from '@supabase/supabase-js';
+import  { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
-// const supabaseUrl = 'https://vogewdoilqaqjlshdzue.supabase.co';
-// const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvZ2V3ZG9pbHFhcWpsc2hkenVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjQ3OTUsImV4cCI6MjA0NjkwMDc5NX0.T1YTNPKH5Caxp1CQYiO6zwGKVcY7UHU0UkOYo6vdVGc';
-// const supabase = createClient(supabaseUrl, supabaseKey);
+const supabaseUrl = 'https://vogewdoilqaqjlshdzue.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvZ2V3ZG9pbHFhcWpsc2hkenVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjQ3OTUsImV4cCI6MjA0NjkwMDc5NX0.T1YTNPKH5Caxp1CQYiO6zwGKVcY7UHU0UkOYo6vdVGc';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-// const FullScreenImage = () => {
-//   const [imageUrl, setImageUrl] = useState(null);
+const FullScreenImage = () => {
+  const [imageUrl, setImageUrl] = useState(null);
 
-//   useEffect(() => {
-//     fetchLatestImage();
+  useEffect(() => {
+    fetchLatestImage();
 
-//     const channel = supabase
-//       .channel('gurgaon')
-//       .on('postgres_changes',
-//         { event: 'INSERT', schema: 'public', table: 'images' },
-//         payload => {
-//           setImageUrl(payload.new.url);
-//         }
-//       )
-//       .subscribe();
-//     return () => {
-//       supabase.removeChannel(channel);
-//     };
-//   }, []);
+    const channel = supabase
+      .channel('gurgaon')
+      .on('postgres_changes',
+        { event: 'INSERT', schema: 'public', table: 'images' },
+        payload => {
+          setImageUrl(payload.new.url);
+        }
+      )
+      .subscribe();
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
-//   const fetchLatestImage = async () => {
-//     try {
-//       const { data, error } = await supabase
-//         .from('images')
-//         .select('url')
-//         .order('created_at', { ascending: false })
-//         .limit(1)
-//         .single();
+  const fetchLatestImage = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('images')
+        .select('url')
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .single();
 
-//       if (error) throw error;
-//       if (data) setImageUrl(data.url);
-//     } catch (error) {
-//       console.error('Error fetching image:', error);
-//     }
-//   };
+      if (error) throw error;
+      if (data) setImageUrl(data.url);
+    } catch (error) {
+      console.error('Error fetching image:', error);
+    }
+  };
 
-//   const containerStyle = {
-//     position: 'fixed',
-//     top: 0,
-//     left: 0,
-//     width: '100vw',
-//     height: '100vh',
-//     backgroundColor: 'black',
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//     overflow: 'hidden',
-//     zIndex: 9999,
-//   };
+  const containerStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100vh',
+    backgroundColor: 'black',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+    zIndex: 9999,
+  };
 
-//   const imageStyle = {
-//     width: '100%',
-//     height: '100%',
-//     objectFit: 'fill',
-//     objectPosition: 'center',
-//   };
+  const imageStyle = {
+    width: '100%',
+    height: '100%',
+    objectFit: 'fill',
+    objectPosition: 'center',
+  };
 
-//   return (
-//     <div style={containerStyle}>
-//       {imageUrl ? (
-//         <img
-//           src={imageUrl}
-//           alt="Latest uploaded image"
-//           style={imageStyle}
-//         />
-//       ) : (
-//         <p style={{ color: 'white', fontSize: '2rem' }}>Loading image...</p>
-//       )}
-//     </div>
-//   );
-// };
+  return (
+    <div style={containerStyle}>
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt="Latest uploaded image"
+          style={imageStyle}
+        />
+      ) : (
+        <p style={{ color: 'white', fontSize: '2rem' }}>Loading image...</p>
+      )}
+    </div>
+  );
+};
 
-// export default FullScreenImage;
+export default FullScreenImage;
 
 
 // // import { useState, useEffect } from 'react';
@@ -168,86 +168,90 @@
 
 // // export default FullScreenImage;
 
-import { useState, useEffect } from 'react';
-import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = 'https://vogewdoilqaqjlshdzue.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvZ2V3ZG9pbHFhcWpsc2hkenVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjQ3OTUsImV4cCI6MjA0NjkwMDc5NX0.T1YTNPKH5Caxp1CQYiO6zwGKVcY7UHU0UkOYo6vdVGc';
-const supabase = createClient(supabaseUrl, supabaseKey);
 
-const FullScreenImage = () => {
-  const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    // Fetch the latest image initially
-    fetchLatestImage();
 
-    // Set up realtime subscription
-    const channel = supabase
-      .channel('table:public:images')  // Use explicit table reference for real-time subscription
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'images' }, (payload) => {
-        if (payload.new?.url) {
-          setImageUrl(payload.new.url);
-        }
-      })
-      .subscribe();
+// import { useState, useEffect } from 'react';
+// import { createClient } from '@supabase/supabase-js';
 
-    // Clean up on unmount
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, []);
+// const supabaseUrl = 'https://vogewdoilqaqjlshdzue.supabase.co';
+// const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvZ2V3ZG9pbHFhcWpsc2hkenVlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzEzMjQ3OTUsImV4cCI6MjA0NjkwMDc5NX0.T1YTNPKH5Caxp1CQYiO6zwGKVcY7UHU0UkOYo6vdVGc';
+// const supabase = createClient(supabaseUrl, supabaseKey);
 
-  const fetchLatestImage = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('images')
-        .select('url')
-        .order('created_at', { ascending: false })
-        .limit(1)
-        .single();
+// const FullScreenImage = () => {
+//   const [imageUrl, setImageUrl] = useState(null);
 
-      if (error) throw error;
-      if (data) setImageUrl(data.url);
-    } catch (error) {
-      console.error('Error fetching image:', error);
-    }
-  };
+//   useEffect(() => {
+//     // Fetch the latest image initially
+//     fetchLatestImage();
 
-  const containerStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100vw',
-    height: '100vh',
-    backgroundColor: 'black',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-    zIndex: 9999,
-  };
+//     // Set up realtime subscription
+//     const channel = supabase
+//       .channel('table:public:images')  // Use explicit table reference for real-time subscription
+//       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'images' }, (payload) => {
+//         if (payload.new?.url) {
+//           setImageUrl(payload.new.url);
+//         }
+//       })
+//       .subscribe();
 
-  const imageStyle = {
-    width: '100%',
-    height: '100%',
-    objectFit: 'fill',
-    objectPosition: 'center',
-  };
+//     // Clean up on unmount
+//     return () => {
+//       supabase.removeChannel(channel);
+//     };
+//   }, []);
 
-  return (
-    <div style={containerStyle}>
-      {imageUrl ? (
-        <img
-          src={imageUrl}
-          alt="Latest uploaded image"
-          style={imageStyle}
-        />
-      ) : (
-        <p style={{ color: 'white', fontSize: '2rem' }}>Loading image...</p>
-      )}
-    </div>
-  );
-};
+//   const fetchLatestImage = async () => {
+//     try {
+//       const { data, error } = await supabase
+//         .from('images')
+//         .select('url')
+//         .order('created_at', { ascending: false })
+//         .limit(1)
+//         .single();
 
-export default FullScreenImage;
+//       if (error) throw error;
+//       if (data) setImageUrl(data.url);
+//     } catch (error) {
+//       console.error('Error fetching image:', error);
+//     }
+//   };
+
+//   const containerStyle = {
+//     position: 'fixed',
+//     top: 0,
+//     left: 0,
+//     width: '100vw',
+//     height: '100vh',
+//     backgroundColor: 'black',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     overflow: 'hidden',
+//     zIndex: 9999,
+//   };
+
+//   const imageStyle = {
+//     width: '100%',
+//     height: '100%',
+//     objectFit: 'fill',
+//     objectPosition: 'center',
+//   };
+
+//   return (
+//     <div style={containerStyle}>
+//       {imageUrl ? (
+//         <img
+//           src={imageUrl}
+//           alt="Latest uploaded image"
+//           style={imageStyle}
+//         />
+//       ) : (
+//         <p style={{ color: 'white', fontSize: '2rem' }}>Loading image...</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default FullScreenImage;
