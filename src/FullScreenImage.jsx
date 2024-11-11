@@ -28,7 +28,7 @@ const FullScreenImage = () => {
   const fetchLatestImage = async () => {
     try {
       const { data, error } = await supabase
-        .from('gurgaon')
+        .from('images')
         .select('url')
         .order('created_at', { ascending: false })
         .limit(1)
